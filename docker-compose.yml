@@ -1,0 +1,43 @@
+# https://medium.com/@taner.dll/docker-compose-for-php-application-environment-a5be3dbd4608
+
+version: "3.8"
+
+services:
+  # Apache and PHP service
+  web:
+    container_name: php-apache-container
+    ports:
+      - "8080:80"
+    volumes:
+      - ./src:/var/www/html
+    build:
+      context: .
+      dockerfile: Dockerfile
+
+  # MySQL service
+  mysql:
+    image: mysql:8.0
+    container_name: mysql-container
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: baim_db
+      MYSQL_USER: baim
+      MYSQL_PASSWORD: baim
+    command: --init-file /tmp/config/init.sql
+    volumes:
+      - ./mysql-data:/var/lib/mysql
+      - ./config/init.sql:/tmp/config/init.sql
+
+  # phpMyAdmin service
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: phpmyadmin-container
+    ports:
+      - "8081:80"
+    environment:
+      PMA_HOST: mysql
+      MYSQL_ROOT_PASSWORD: root
+    depends_on:
+      - mysql
