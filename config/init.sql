@@ -20,13 +20,19 @@ CREATE TABLE IF NOT EXISTS modules (
   name VARCHAR(60) NOT NULL
 );
 
+CREATE TABLE IF NOT EXISTS login_logs (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  ip VARCHAR(30) NOT NULL,
+  timestamp TIMESTAMP NOT NULL
+);
+
 
 INSERT INTO users(name, surname, login, password)
 SELECT 'baim', 'baim', 'baim', "7a544776eddc3a3928651242bf7b7d6630706733"
 WHERE NOT EXISTS (SELECT 1 FROM users);
 
 INSERT INTO modules(path, name)
-SELECT 'upload', 'Prześlij plik'
+SELECT 'upload', 'Prześlij fakturę'
 WHERE NOT EXISTS (SELECT 1 FROM modules);
 
 INSERT INTO permissions

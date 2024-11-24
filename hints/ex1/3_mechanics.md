@@ -8,7 +8,7 @@ Winne jest pozwolenie na wykonanie wielu poleceń SQL i pełne zaufanie do tego 
 
 ## Relacja bazy danych
 
-Tak jak zostało to napisane w [podpowiedzi](3_1_hint.md) istnieją 3 tabele.
+Tak jak zostało to napisane w [podpowiedzi](3_1_hint.md) istnieją 4 tabele.
 
 Obsługa logiki modułów wygląda w następujący sposób:
 
@@ -145,5 +145,5 @@ return $module;
 Ciężko ocenić... Mogłoby się wydawać, że żądana ścieżka przecież będzie taka sama zarówno w bazie jak i zmiennej. Jednak może się okazać, że jakaś wyrafinowana metoda ataku, będzie w stanie tę linijke nadużyć, a w przypadku danych pochodzących z bazy istnieje możliwość, że zostały one przygotowane na taką możliwość. Więc mimo wszystko wychodząc z założenia, że nie warto ufać użytkownikowi, powinniśmy poprawić kod w następujący sposób:
 
 ```php
-  $module = basename($row["path"]).".php";
+$module = basename($row["path"]).".php";
 ```

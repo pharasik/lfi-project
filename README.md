@@ -43,6 +43,8 @@ gdy pojawi się komunikat:
 
 W katalogu docker powinien zostać utworzony folder mysql-data. To ważny katalog z perspektywy aplikacji, bo mieści w sobie całą bazę danych. Z racji tego, że nie znajduje się on wewnątrz kontenera, ale na Twoim dysku, to nie musisz martwić się o utratę danych po wyłączeniu aplikacji.
 
+W przypadku uszkodzenia bazy danych, zatrzymaj aplikację, usuń folder mysql-data i uruchom ją ponownie.
+
 Aby wejść do aplikacji należy odwiedzić localhost:8080.
 
 ```
@@ -50,8 +52,8 @@ Login: baim
 Hasło: baim
 ```
 
-Aby wejść do panelu phpmyadmin należy odwiedzić localhost:8081. \
-Phpmyadmin to aplikacja, która może Ci się przydać do modyfikowania rekordów w tabelach bazy danych.
+Aby wejść do panelu phpMyAdmin należy odwiedzić localhost:8081. \
+phpMyAdmin to aplikacja, która może Ci się przydać do modyfikowania rekordów w tabelach bazy danych.
 
 ```
 Login: root
@@ -102,7 +104,7 @@ Jakie pliki przyjmuje formularz? \
 Gdzie są one przechowywane? \
 [Jak wysłać złośliwy kod? [PODPOWIEDŹ]](hints/ex1/2_1_hint.md) \
 [Wykonanie [ROZWIĄZANIE]](hints/ex1/2_solution.md) \
-[Dlaczego tak się da? [MECHANIKA]](hints/ex1/2_mechanics.md)
+[Sprawdzanie plików [MECHANIKA]](hints/ex1/2_mechanics.md)
 
 3. Przyznaj swojemu użytkownikowi uprawnienia do wykonania złośliwego modułu.
 
@@ -112,11 +114,11 @@ Czy któraś z kolumn może być nadużyta?
 [Jak wygląda struktura bazy danych? [PODPOWIEDŹ]](hints/ex1/3_1_hint.md) \
 [Jak to wykonać? [PODPOWIEDŹ]](hints/ex1/3_2_hint.md) \
 [Wykonanie [ROZWIĄZANIE]](hints/ex1/3_solution.md) \
-[Dlaczego tak się da? [MECHANIKA]](hints/ex1/3_mechanics.md)
+[Komunikacja z bazą [MECHANIKA]](hints/ex1/3_mechanics.md)
 
 4. Uruchom złośliwy moduł
 
-[[MECHANIKA]](hints/ex1/4_mechanics.md)
+[Konsekwencje ataku [MECHANIKA]](hints/ex1/4_mechanics.md)
 
 ## Zadanie 2
 
@@ -124,4 +126,4 @@ Czy jest możliwe wykonanie ataku path traversal głębiej niż aplikacja na to 
 
 [Jak się za to zabrać? [PODPOWIEDŹ]](hints/ex2/1_hint.md) \
 [Wykonanie [ROZWIĄZANIE]](hints/ex2/1_solution.md) \
-[Jaki jest tego powód? [MECHANIKA]](hints/ex2/1_mechanics.md)
+[ [MECHANIKA]](hints/ex2/1_mechanics.md)

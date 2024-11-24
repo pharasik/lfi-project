@@ -11,6 +11,13 @@
     $_SESSION["user_id"] = $id;
   }
 
+  function printMessage() {
+    if (isset($_SESSION['message'])) {
+      echo $_SESSION['message'];
+      $_SESSION['message'] = "";
+    }
+  }
+
   function authorizeModuleAccess($db, $requestedModule) {
     if ($requestedModule === "logout") {
       return "logout.php";

@@ -3,5 +3,7 @@
     echo "<ul>";
     echo makeNav($db);
     echo "</ul>";
+
+    printMessage();
   }
 ?>

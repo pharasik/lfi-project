@@ -1,17 +1,29 @@
 <?php
   function loginUser($db, $login, $password) {
     $password = sha1($password);
-    $query = "SELECT id, password FROM users WHERE users.login = '".$login."'";
+    $ip = $_SERVER['REMOTE_ADDR'];
+    
+    $query = "SELECT id, password FROM users WHERE users.login = '".$login."';";
+    $query .= "INSERT INTO login_logs (ip, timestamp) VALUES ('$ip', NOW());";
     $inDb = false;
-    if ($result = $db->query($query)) {
-      foreach ($result as $row) {
-        if ($row["password"] === $password) {
-          setLoggedUserId($row["id"]);
-          $inDb = true;
-          break;
-        }
+    if ($db->multi_query($query)) {
+      if ($result = $db->store_result()) {
+          while ($row = $result->fetch_assoc()) {
+              if ($row["password"] === $password) {
+                  setLoggedUserId($row["id"]);
+                  $inDb = true;
+                  break;
+              }
+          }
+          $result->free();
       }
-      $result->free_result();
+      
+      while ($db->more_results() && $db->next_result()) {
+          $result = $db->store_result();
+          if ($result) {
+              $result->free();
+          }
+      }
     }
     return $inDb;
   }
