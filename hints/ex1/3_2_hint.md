@@ -3,7 +3,7 @@
 Można na 2 sposoby:
 
 1. Panel PHPMyAdmin (port 8081)
-2. Wstrzykiwanie SQL
+2. Wstrzykiwanie SQL (wersja ambitna)
 
 Zwróć uwagę na to jaką ścieżkę relatywną chcesz wpisać.
 

@@ -2,7 +2,7 @@
 
 ## SQLi
 
-Omówmy to w telegraficznym skrócie, dlaczego tak się dzieje. Jeśli jesteś chętny(-a) poznać więcej o tym temacie, to odsyłamy Ciebię do prezentacji projektu, który dotyczy SQLi.
+Omówmy to w telegraficznym skrócie, dlaczego tak się dzieje. Jeśli jesteś chętny(-a) poznać więcej o tym temacie, to odsyłamy Ciebie do prezentacji projektu o SQLi. Ewentualnie możemy wyjaśnić po prezentacji.
 
 Winne jest pozwolenie na wykonanie wielu poleceń SQL i pełne zaufanie do tego co wprowadza użytkownik.
 
@@ -55,7 +55,7 @@ $query = "SELECT path, name FROM permissions INNER JOIN modules ON permissions.m
 
 2. Wyświetl te moduły
 
-Następnie dla każdej pary informacji o module (path, name) dostępnym dla użytkownika generowana jest lista z odnośnikiem:
+Następnie dla każdej pary informacji o module (ścieżka, nazwa) dostępnym dla użytkownika generowana jest lista z odnośnikiem:
 
 ```php
 foreach ($result as $row) {
@@ -108,7 +108,7 @@ function authorizeModuleAccess($db, $requestedModule) {
 }
 ```
 
-Dostęp do wskazanego modułu, może być przyznany tylko, gdy są udzielone odpowienie uprawnienia. Wyżej znajduje się identyczne zapytanie jak to, któro było wykorzystane do generowania panelu nawigacyjnego. Różnicą jest tylko to co dzieje się z tymi danymi:
+Dostęp do wskazanego modułu, może być przyznany tylko, gdy są udzielone odpowienie uprawnienia. Wyżej znajduje się identyczne zapytanie jak to, które było wykorzystane do generowania panelu nawigacyjnego. Różnicą jest tylko to co dzieje się z uzyskanymi danymi:
 
 ```php
 // lib/utils.php
@@ -123,7 +123,7 @@ foreach ($result as $row) {
 return $module;
 ```
 
-są one porównywane z żądanym zasobem. I gdy ten znajdzie się na liście autoryzowanych modułów, to do pliku index.php zwracana jest żądana ścieżka poszerzona o rozszerzenie ".php".
+są one porównywane z żądanym zasobem. I gdy ten znajdzie się na liście autoryzowanych modułów, to do pliku index.php zwracana jest ścieżka do żądanego modułu poszerzona o rozszerzenie ".php".
 
 ## Gdzie jest błąd i jak go uniknąć?
 
@@ -142,7 +142,7 @@ return $module;
 
 ## Czy w tej konkatenacji błędem jest użycie $requestedModule pochodzącego od użytkownika?
 
-Ciężko ocenić... Mogłoby się wydawać, że żądana ścieżka przecież będzie taka sama zarówno w bazie jak i zmiennej. Jednak może się okazać, że jakaś wyrafinowana metoda ataku, będzie w stanie tę linijke nadużyć. Więc mimo wszystko wychodząc z założenia, że nie warto ufać użytkownikowi, powinniśmy poprawić kod w następujący sposób:
+Ciężko ocenić... Mogłoby się wydawać, że żądana ścieżka przecież będzie taka sama zarówno w bazie jak i zmiennej. Jednak może się okazać, że jakaś wyrafinowana metoda ataku, będzie w stanie tę linijke nadużyć, a w przypadku danych pochodzących z bazy istnieje możliwość, że zostały one przygotowane na taką możliwość. Więc mimo wszystko wychodząc z założenia, że nie warto ufać użytkownikowi, powinniśmy poprawić kod w następujący sposób:
 
 ```php
   $module = basename($row["path"]).".php";

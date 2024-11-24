@@ -2,31 +2,31 @@
 
 ## Metoda SQLi
 
-Nie rozwodząc się za bardzo...
+Nie rozwodząc się za bardzo nad działaniem tego zapytania należy:
 
 ## PhpMyAdmin
 
-Zalogować się do panelu (localhost:8081) \
-Należy rozwinąć bazę danych **baim_db** \
-Wybrać tabelę **modules**
+1. Zaloguj się do panelu (localhost:8081) \
+2. Rozwiń bazę danych **baim_db** \
+3. Wybierz tabelę **modules**
 
 ![Widok phpmyadmin](images/phpmyadmin.png)
 
-Przyciskiem na górze przejść do zakładki **Insert**
+4. Przyciskiem na samej górze przejdź do zakładki **Insert**
 
 ![Przycisk insert](images/insert.png)
 
-Wpisać następujące wartości (nie trzeba id) i kliknąć GO
+5. Wpisz następujące wartości (nie trzeba wpisywać id) i kliknij GO
 
 ![Widok insert modules](images/modules.png)
 
-Następnie przejść do tabeli **permissions** i dodać dla użytkownika **baim** dostęp do modułu o id=2
+6. Następnie przejdź do tabeli **permissions** i dodaj dla użytkownika **baim** (jego id jest równe1) dostęp do modułu o id równym 2
 
 ![Widok insert permissions](images/permissions.png)
 
-Tabele powinny wyglądać tak:
+7. Tabele powinny wyglądać tak:
 
 ![Modules](images/modules1.png)
 ![Permissions](images/permissions1.png)
 
-Po odświeżeniu panelu testowanej aplikacji (localhost:8080), powinien pojawić się moduł o nazwie **evil**
+Po odświeżeniu panelu testowanej aplikacji (localhost:8080), powinien pojawić się moduł o nazwie **Evil**

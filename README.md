@@ -11,28 +11,28 @@ w np. XAMPP'ie, to aplikacja powinna uruchomić się bez problemu, jednakże nin
 
 ### O aplikacji
 
-Aplikacja, którą będziesz poddawać testowi została napisana w języku PHP (8.2.25) i działa na serwerze Apache. Ponadto korzysta ona z serwera bazodanowego MySQL (MariaDB).
+Aplikacja, którą będziesz poddawać testowi została napisana w języku PHP (8.2.25) i działa na serwerze Apache. Ponad to korzysta ona z serwera bazodanowego MySQL (MariaDB).
 
 W katalogu src znajdziesz kod źródłowy strony. Chcąc zmienić dane
 dostępowe do bazy danych należy zmodyfikować plik src/lib/connect.php. Plik
 inicjalizujący bazę danych znajduje się w ścieżce config/init.sql. Zawarte są
 w nim kwerendy odpowiedzialne za utworzenie odpowiednich tabel i rekordów. Jeśli
-utkniesz w trakcie wykonywania zadania, to możesz śmiało zajrzeć do niego w poszukiwaniu
-informajcji o strukturze bazy danych.
+utkniesz w trakcie wykonywania zadania, to możesz śmiało zajrzeć do tego pliku w poszukiwaniu
+informacji o strukturze bazy danych.
 
 ### Instalacja
 
 Pliki docker-compose.yml i Dockerfile pomogą Ci w szybkim postawieniu apliakcji.
-Jeśli podążasz za naszym zaleceniem, to nie ingeruj w pliki konfiguracyjne aplikacji (no chyba, że napotkasz problem).
+Jeśli podążasz za naszym zaleceniem, to nie ingeruj w pliki konfiguracyjne aplikacji (no chyba, że napotkasz jakiś problem).
 
-Upewnij się, że silnik Dockera jest uruchomiony. Możesz to wykonać włączając go w panelu Docker Desktop.
+Upewnij się, że silnik Docker'a jest uruchomiony. Możesz to sprawdzić w panelu Docker Desktop.
 Następnie w folderze docker użyj komendy:
 
 ```sh
 docker-compose up --build
 ```
 
-Terminal powinien wskazywać uruchomienie się 3 kontenerów: php-apache-container,
+Terminal powinien wskazać Ci uruchomienie się 3 kontenerów: php-apache-container,
 mysql-container i phpmyadmin-container. Pierwszy i ostatni powinny uruchomić się
 szybko i bez problemu, natomiast mysql-container uruchomi się 3 razy i będzie gotowy dopiero
 gdy pojawi się komunikat:
@@ -41,7 +41,7 @@ gdy pojawi się komunikat:
 ... [System] [MY-010931] [Server] /usr/sbin/mysqld: ready for connections. ...
 ```
 
-W katalogu docker został utworzony folder mysql-data. To ważny katalog z perspektywy aplikacji, bo mieści w sobie całą bazę danych. Z racji tego, że nie znajduje się on wewnątrz kontenera, ale na Twoim dysku, to nie musisz martwić się o utratę danych wewnątrz aplikacji.
+W katalogu docker powinien zostać utworzony folder mysql-data. To ważny katalog z perspektywy aplikacji, bo mieści w sobie całą bazę danych. Z racji tego, że nie znajduje się on wewnątrz kontenera, ale na Twoim dysku, to nie musisz martwić się o utratę danych po wyłączeniu aplikacji.
 
 Aby wejść do aplikacji należy odwiedzić localhost:8080.
 
@@ -50,7 +50,7 @@ Login: baim
 Hasło: baim
 ```
 
-Aby wejść w panel phpmyadmin należy odwiedzić localhost:8081. \
+Aby wejść do panelu phpmyadmin należy odwiedzić localhost:8081. \
 Phpmyadmin to aplikacja, która może Ci się przydać do modyfikowania rekordów w tabelach bazy danych.
 
 ```
@@ -62,9 +62,9 @@ Aby zakończyć działanie docker-compose użyj kombinacji CTRL-C.
 
 ### O zadaniach
 
-Teraz możesz przystąpić do wykonywania zadań. Zachęcamy Cię, abyś spróbował(-ła) zmierzyć się z zadaniami bez hints i rozwiązań, jeśli jednak nie czujesz się na siłach, to możesz śmiało do nich sięgać. Zostały one napisane w taki sposób, abyś nie czuł(-ła) się zagubiony(-a). Do każdej części zadania zostało dolączone wytłumaczenie mechaniki zaistniałego błędu (najlepiej poczytać po ukończeniu zadania).
+Teraz możesz przystąpić do wykonywania zadań. Zachęcamy Cię, abyś spróbował(-ła) zmierzyć się z zadaniami bez zaglądania do podpowiedzi i rozwiązań, jeśli jednak nie czujesz się na siłach, to możesz śmiało po nie sięgać. Zostały one napisane w taki sposób, abyś nie czuł(-ła) się zagubiony(-a). Do każdej części zadania zostało dolączone wytłumaczenie mechaniki danego kroku, które najlepiej poczytać po ukończeniu zadania.
 
-Korzystaj również z kodu źródłowego, jeśli uznasz to za konieczne. Być może to Twoja pierwsza styczność z PHP. Jego składnia przypomina mieszankę C i Javascript, więc nie powinieneś(-aś) mieć problemów ze zrozumieniem kodu na poziomie abstrakcji.
+Korzystaj również z kodu źródłowego, jeśli uznasz to za konieczne. Być może jest to Twoja pierwsza styczność z PHP. Dla uspokojenia, jego składnia przypomina mieszankę C i Javascript, więc nie powinieneś(-aś) mieć problemów ze zrozumieniem kodu na poziomie abstrakcji.
 
 Powodzenia!
 
@@ -80,7 +80,7 @@ Jak wczytywane są fragmenty strony? \
 
 2. Wyślij złośliwy moduł
 
-Może to być najprostszy plik o treści:
+Może to być najprostszy możliwy plik o treści:
 
 ```php
 <?php
@@ -96,7 +96,7 @@ lub też kod RCE:
 ?>
 ```
 
-gdzie $\_GET['cmd'] przyjmuję wartość pola cmd z zapytania GET.
+gdzie $\_GET['cmd'] przyjmuję wartość pola "cmd" z zapytania GET.
 
 Jakie pliki przyjmuje formularz? \
 Gdzie są one przechowywane? \
@@ -107,7 +107,7 @@ Gdzie są one przechowywane? \
 3. Przyznaj swojemu użytkownikowi uprawnienia do wykonania złośliwego modułu.
 
 Jakie informacje o użytkowniku przechowuje baza danych? \
-Czy któraś z kolumn może zostać nadużyta?
+Czy któraś z kolumn może być nadużyta?
 
 [Jak wygląda struktura bazy danych? [PODPOWIEDŹ]](hints/ex1/3_1_hint.md) \
 [Jak to wykonać? [PODPOWIEDŹ]](hints/ex1/3_2_hint.md) \
@@ -116,7 +116,7 @@ Czy któraś z kolumn może zostać nadużyta?
 
 4. Uruchom złośliwy moduł
 
-[[MECHANIKA]]()
+[[MECHANIKA]](hints/ex1/4_mechanics.md)
 
 ## Zadanie 2
 
