@@ -6,12 +6,14 @@ W przykładowym złośliwym kodzie zaproponowaliśmy wykonanie komend powłoki, 
 
 Przykładową komendą jaką można wykonać jest sprawdzenie logów:
 
+<!-- [TODO] poprawić komendę -->
+
 ```sh
 cat ../../../../etc/logs
 ```
 
-Można też próbować otworzyć odwróconą powłokę, czy wysłać dodatkowy plik napisany w np. Bashu i uruchomić go złośliwym modułem.
+Można też próbować otworzyć odwróconą powłokę, czy też wysłać dodatkowy plik napisany w np. Bashu i uruchomić go złośliwym modułem.
 
 # Jak zapobiec?
 
-Sęk w tym, że niepoprawnie skonfigurowane konto serwera www, może przemieszczać się po całym systemie plików. Dobrą praktyką jest uwięzienie takiego użytkownika w folderze roboczym aplikacji. Można to wykonać komendą **chroot**.
+Sęk w tym, że niepoprawnie skonfigurowane konto serwera www, może pozwolić na przemieszczanie się po całym systemie plików. Dobrą praktyką jest uwięzienie takiego użytkownika w folderze roboczym aplikacji. Można to wykonać komendą **chroot** lub za pomocą specjalnie do tego przeznaczonych aplikacji.

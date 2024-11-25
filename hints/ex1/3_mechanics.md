@@ -147,3 +147,9 @@ Ciężko ocenić... Mogłoby się wydawać, że żądana ścieżka przecież bę
 ```php
 $module = basename($row["path"]).".php";
 ```
+
+## Czy można obejść dodawanie rozszerzenia .php?
+
+W nowych wersjach PHP usunięcie znaków dołączonych na końcu ciągu, który może być manipulowany przez atakującego, jest niemożliwe. W wersjach starszych niż PHP 5.3.4 istniało zagrożenie użycia null byte'a do ucięcia reszty znaków. Działo się tak ponieważ interpreter PHP zwyczajnie dopuszczał takie zachowania (dziedziczone z C). Jednkaże, funkcja include_once() [wyświetlała odpowiedni alert](https://bugs.php.net/bug.php?id=39863).
+
+https://nvd.nist.gov/vuln/detail/cve-2006-7243
