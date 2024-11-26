@@ -2,17 +2,15 @@
 
 Uruchomienie złośliwego modułu wykonuje wstrzyknięty kod. Ten kod właściwie może wykonać dowolną akcję na serwerze ofiary. Mimo, że skrypt interpretowany jest przez PHP, to można próbować odwołać się do innych języków.
 
-W przykładowym złośliwym kodzie zaproponowaliśmy wykonanie komend powłoki, a stąd można próbować eskalować swoje uprawnienia.
+W przykładowym złośliwym kodzie, zaproponowaliśmy wykonanie skryptów powłoki, a takim sposobem można próbować eskalować swoje uprawnienia.
 
-Przykładową komendą jaką można wykonać jest sprawdzenie logów:
-
-<!-- [TODO] poprawić komendę -->
+Przykładową komendą, jaką można wykonać jest sprawdzenie logów:
 
 ```sh
-cat ../../../../etc/logs
+cat ../../../var/log/apt/history.log
 ```
 
-Można też próbować otworzyć odwróconą powłokę, czy też wysłać dodatkowy plik napisany w np. Bashu i uruchomić go złośliwym modułem.
+Można też próbować utworzyć odwróconą powłokę, czy też wysłać dodatkowy plik napisany w np. Bashu lub dowolnym innym języku i uruchomić go złośliwym modułem.
 
 # Jak zapobiec?
 

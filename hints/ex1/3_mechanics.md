@@ -2,9 +2,9 @@
 
 ## SQLi
 
-Omówmy to w telegraficznym skrócie, dlaczego tak się dzieje. Jeśli jesteś chętny(-a) poznać więcej o tym temacie, to odsyłamy Ciebie do prezentacji projektu o SQLi. Ewentualnie możemy wyjaśnić po prezentacji.
+Omówmy w telegraficznym skrócie, dlaczego tak się dzieje. Jeśli jesteś chętny(-a) poznać więcej w tym temacie, to odsyłamy Ciebie do prezentacji projektu o SQLi. Ewentualnie możemy wyjaśnić niektóre elementy po zakończeniu prezentacji.
 
-Winne jest pozwolenie na wykonanie wielu poleceń SQL i pełne zaufanie do tego co wprowadza użytkownik.
+Winne jest pozwolenie na wykonanie wielu poleceń SQL i pełne zaufanie do tego, co wprowadza użytkownik.
 
 ## Relacja bazy danych
 
@@ -12,7 +12,7 @@ Tak jak zostało to napisane w [podpowiedzi](3_1_hint.md) istnieją 4 tabele.
 
 Obsługa logiki modułów wygląda w następujący sposób:
 
-1. Zapytaj bazę danych jakie moduły można wyświetlić użytkownikowi
+1. Zapytaj bazę danych, jakie moduły można wyświetlić użytkownikowi
 
 W module głównym wywoływana jest funkcja odpowiedzialna za wyświetlenie menu nawigacyjnego.
 
@@ -30,7 +30,7 @@ Ciało tej funkcji prezentuje się następująco:
 
 ```php
 // lib/utils.php
-// line 36
+// line 41
 function makeNav($db) {
   $query = "SELECT path, name FROM permissions INNER JOIN modules ON permissions.module_id = modules.id WHERE permissions.user_id = ".getLoggedUserId();
   $html = "";
@@ -55,7 +55,7 @@ $query = "SELECT path, name FROM permissions INNER JOIN modules ON permissions.m
 
 2. Wyświetl te moduły
 
-Następnie dla każdej pary informacji o module (ścieżka, nazwa) dostępnym dla użytkownika generowana jest lista z odnośnikiem:
+Następnie, dla każdej pary informacji o module (ścieżka, nazwa) dostępnym dla użytkownika generowana jest lista z odnośnikiem:
 
 ```php
 foreach ($result as $row) {
@@ -63,9 +63,9 @@ foreach ($result as $row) {
 }
 ```
 
-3. Gdy użytkownik wybierze jakiś moduł, sprawdź czy faktycznie, to o co prosi może zostać mu wyświetlone
+3. Gdy użytkownik wybierze jakiś moduł, sprawdź, czy faktycznie, to o co prosi, może zostać mu wyświetlone
 
-Tutaj musimy się przenieść do pliku index.php
+Tutaj musimy się przenieść do pliku **index.php**
 
 ```php
 // index.php
@@ -79,14 +79,14 @@ if (isUserLogged()) {
 }
 ```
 
-Powyższy kod dla nie zalogowanego użytkownika wyświetli panel logowania, a dla zalogowanego:
+Powyższy kod, dla nie zalogowanego użytkownika wyświetli panel logowania, a dla zalogowanego:
 
 - moduł główny, gdy o nic nie prosi;
-- moduł, który wskaże.
+- moduł, który użytkownik wskaże.
 
 ```php
 // lib/utils.php
-// line 14
+// line 21
 function authorizeModuleAccess($db, $requestedModule) {
   if ($requestedModule === "logout") {
     return "logout.php";
@@ -108,11 +108,11 @@ function authorizeModuleAccess($db, $requestedModule) {
 }
 ```
 
-Dostęp do wskazanego modułu, może być przyznany tylko, gdy są udzielone odpowienie uprawnienia. Wyżej znajduje się identyczne zapytanie jak to, które było wykorzystane do generowania panelu nawigacyjnego. Różnicą jest tylko to co dzieje się z uzyskanymi danymi:
+Dostęp do wskazanego modułu może być przyznany tylko, gdy są udzielone odpowienie uprawnienia. Wyżej znajduje się identyczne zapytanie jak to, które było wykorzystane do generowania panelu nawigacyjnego. Różnicą jest tylko to, co dzieje się z uzyskanymi danymi:
 
 ```php
 // lib/utils.php
-// line 14
+// line 30
 foreach ($result as $row) {
   if ($row["path"] === $requestedModule) {
     $module = $requestedModule.".php";
@@ -123,11 +123,11 @@ foreach ($result as $row) {
 return $module;
 ```
 
-są one porównywane z żądanym zasobem. I gdy ten znajdzie się na liście autoryzowanych modułów, to do pliku index.php zwracana jest ścieżka do żądanego modułu poszerzona o rozszerzenie ".php".
+są one porównywane z żądanym zasobem. I gdy ten znajdzie się na liście autoryzowanych modułów, to do pliku **index.php** zwracana jest ścieżka do żądanego modułu poszerzona o rozszerzenie **.php**.
 
 ## Gdzie jest błąd i jak go uniknąć?
 
-Tak jak było to wspomniane w [kroku 1.](1_mechanics.md#jak-temu-zaradzić) błędem jest brak filtrowania danych. Akurat w naszym wypadku tymi danymi są ścieżki, więc w celu zabezpieczenia ich możemy wykorzystać polecenie basename(), które usuwa niechciane znaki ze ścieżek. Poprawny kod wyglądałby tak:
+Tak, jak było to wspomniane w [kroku 1.](1_mechanics.md#jak-temu-zaradzić), błędem jest brak filtrowania danych. Akurat w naszym wypadku tymi danymi są ścieżki, więc w celu zabezpieczenia ich możemy wykorzystać polecenie **basename()**, które usuwa niechciane znaki ze ścieżek. Poprawny kod wyglądałby tak:
 
 ```php
 foreach ($result as $row) {
@@ -142,14 +142,14 @@ return $module;
 
 ## Czy w tej konkatenacji błędem jest użycie $requestedModule pochodzącego od użytkownika?
 
-Ciężko ocenić... Mogłoby się wydawać, że żądana ścieżka przecież będzie taka sama zarówno w bazie jak i zmiennej. Jednak może się okazać, że jakaś wyrafinowana metoda ataku, będzie w stanie tę linijke nadużyć, a w przypadku danych pochodzących z bazy istnieje możliwość, że zostały one przygotowane na taką możliwość. Więc mimo wszystko wychodząc z założenia, że nie warto ufać użytkownikowi, powinniśmy poprawić kod w następujący sposób:
+Ciężko ocenić... Mogłoby się wydawać, że żądana ścieżka przecież będzie taka sama zarówno w bazie jak i zmiennej. Jednak może się okazać, że wyrafinowana metoda ataku będzie w stanie nadużyć tej linijki, a w przypadku danych pochodzących z bazy istnieje możliwość, że zostały one przygotowane z myślą o takiej sytuacji. Więc mimo wszystko, wychodząc z założenia, że nie warto ufać użytkownikowi, powinniśmy poprawić kod w następujący sposób:
 
 ```php
 $module = basename($row["path"]).".php";
 ```
 
-## Czy można obejść dodawanie rozszerzenia .php?
+## Czy można obejść dodawanie rozszerzenia **.php**?
 
-W nowych wersjach PHP usunięcie znaków dołączonych na końcu ciągu, który może być manipulowany przez atakującego, jest niemożliwe. W wersjach starszych niż PHP 5.3.4 istniało zagrożenie użycia null byte'a do ucięcia reszty znaków. Działo się tak ponieważ interpreter PHP zwyczajnie dopuszczał takie zachowania (dziedziczone z C). Jednkaże, funkcja include_once() [wyświetlała odpowiedni alert](https://bugs.php.net/bug.php?id=39863).
+W nowych wersjach PHP usunięcie znaków dołączonych na końcu ciągu, który jest manipulowany przez atakującego, jest niemożliwe. W wersjach starszych niż PHP 5.3.4, istniało zagrożenie użycia **null byte'a** do ucięcia reszty znaków. Działo się tak, ponieważ interpreter PHP zwyczajnie dopuszczał takie zachowanie. Ciekawym jest, że funkcja include_once() [wyświetlała odpowiedni alert](https://bugs.php.net/bug.php?id=39863).
 
 https://nvd.nist.gov/vuln/detail/cve-2006-7243

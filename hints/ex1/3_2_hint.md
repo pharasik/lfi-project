@@ -2,10 +2,10 @@
 
 Można na 2 sposoby:
 
-1. Panel pHPMyAdmin (port 8081)
+1. Panel phpMyAdmin (port 8081)
 2. Wstrzykiwanie SQL (wersja ambitna)
 
-Zwróć uwagę na to jaką ścieżkę relatywną chcesz wpisać.
+Zwróć uwagę na to, jaką ścieżkę relatywną chcesz wpisać.
 
 Jaki jest folder roboczy? \
 Gdzie znajduje się złośliwy moduł?
@@ -14,4 +14,4 @@ Gdzie znajduje się złośliwy moduł?
 
 ## SQL Injection
 
-Jeśli decydujesz się na to podejście, polecamy sprawdzanie wyników działania wstrzykniętego kodu w panelu phpMyAdmin. Akurat ten element aplikacji nie zwraca informacji o tym co się dzieje - zwraca tylko błąd.
+Jeśli decydujesz się na to podejście, polecamy sprawdzanie wyników działania wstrzykniętego kodu w panelu phpMyAdmin. Akurat ten element aplikacji nie zwraca informacji o tym co się dzieje - zwraca jedynie błąd, jeśli parser takowy napotka. Wykonywane są wszystkie polecenia przed poleceniem błędnym.

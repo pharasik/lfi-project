@@ -2,7 +2,7 @@
 
 ## Wyjaśnienie dotyczące mechanizmu sesji
 
-W PHP istnieje mechanizm sesji, który umożliwia przechowywanie danych związanych z użytkownikiem w czasie korzystania przez niego z aplikacji, m.in: identyfikatorów, ról, komunikatów o błędach itp. Dla każdej sesji generowany jest unikalny identyfikator.
+W PHP istnieje mechanizm sesji, który umożliwia przechowywanie danych związanych z użytkownikiem w czasie korzystania przez niego z aplikacji m.in: identyfikatorów, ról, komunikatów o błędach itp. Dla każdej sesji generowany jest unikalny identyfikator.
 W naszej aplikacji sesja ustanawiana jest tuż po zażądaniu przez użytkownika dostępu do strony.
 
 ```php
@@ -13,7 +13,7 @@ W naszej aplikacji sesja ustanawiana jest tuż po zażądaniu przez użytkownika
   // ...
 ```
 
-Do informacji sesyjnych można odwoływać się (tylko po stronie serwera) zmienną globalną $\_SESSION[parametr]. Na poziomie protokołu HTTP, identyfikator sesji (dla PHP) przechowywany jest w ciasteczku **PHPSESSID**. Stąd po zalogowaniu należało zebrać zawartość tego ciasteczka.
+Do informacji sesyjnych można odwoływać się (tylko po stronie serwera) zmienną globalną $\_SESSION[parametr]. Na poziomie protokołu HTTP, identyfikator sesji (dla PHP) przechowywany jest w ciasteczku **PHPSESSID**. Stąd, po zalogowaniu, należało zebrać zawartość tego ciasteczka.
 
 ## Path traversal po całym systemie plików
 
@@ -39,8 +39,8 @@ if (isset($_POST["submit"])) {
 }
 ```
 
-Jak widać "uploads/" jest konkatenowane z niebezpiecznym polem "full_path", bez żadnego filtrowania. Ktoś mógłby zastanowić się, czy pole "tmp_name" też nie powinno podlegać filtrowaniu. Akurat wartość tej zmiennej generowana jest przez PHP. Jest to ścieżka do wysłanego pliku, który tymczasowo jest przechowywany po stronie serwera, więc nie ma takiej potrzeby.
+Jak widać, **"uploads/"** jest konkatenowane z niebezpiecznym polem **"full_path"** bez żadnego filtrowania. Ktoś mógłby zastanowić się, czy pole **"tmp_name"** też nie powinno być filtrowane. Akurat wartość tej zmiennej generowana jest przez PHP. Jest to ścieżka do wysłanego pliku, który tymczasowo jest przechowywany po stronie serwera, więc nie ma takiej potrzeby.
 
 # Jak zapobiec?
 
-Najlepiej korzystać z pola 'name', ponieważ nie zawiera ono informacji o ścieżkach. Jednak, dodatkowo dla pewności, należy użyć funkcji basename().
+Najlepiej korzystać z pola 'name', ponieważ nie zawiera ono informacji o ścieżkach. Dodatkowo dla pewności, należy użyć funkcji basename().

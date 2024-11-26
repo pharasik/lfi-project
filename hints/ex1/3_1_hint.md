@@ -7,4 +7,4 @@ Na bazę danych aplikacji składają się 4 tabele, ale tak naprawdę 3 nas będ
 - **permissions** - wiążąca użytkowników z modułami (uprawnia do otworzenia modułu),
 - login_logs - zawierająca dane o próbie logowania.
 
-W pierwszych dwóch tabelach kluczem jest kolumna id. Tabela permissions nie posiada własnego klucza, ale odnosi się do kluczy tabel users i modules.
+W pierwszych dwóch tabelach kluczem jest kolumna id. Tabela **permissions** nie posiada własnego klucza, ale odnosi się do kluczy tabel users i modules.
