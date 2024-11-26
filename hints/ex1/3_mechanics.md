@@ -1,4 +1,4 @@
-# Dlaczego tak się da?
+# Komunikacja z bazą [MECHANIKA]
 
 ## SQLi
 

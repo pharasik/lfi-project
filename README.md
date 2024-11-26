@@ -126,4 +126,4 @@ Czy jest możliwe wykonanie ataku path traversal głębiej, niż aplikacja na to
 
 [Jak się za to zabrać? [PODPOWIEDŹ]](hints/ex2/1_hint.md) \
 [Wykonanie [ROZWIĄZANIE]](hints/ex2/1_solution.md) \
-[ [MECHANIKA]](hints/ex2/1_mechanics.md)
+[Zmienna $\_FILES [MECHANIKA]](hints/ex2/1_mechanics.md)

@@ -1,4 +1,4 @@
-# Cos
+# Konsekwencje ataku [MECHANIKA]
 
 Uruchomienie złośliwego modułu wykonuje wstrzyknięty kod. Ten kod właściwie może wykonać dowolną akcję na serwerze ofiary. Mimo, że skrypt interpretowany jest przez PHP, to można próbować odwołać się do innych języków.
 

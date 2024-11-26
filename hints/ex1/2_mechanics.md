@@ -1,4 +1,4 @@
-# Dlaczego tak się da? [MECHANIKA]
+# Sprawdzanie plików [MECHANIKA]
 
 Powodem, dla którego możliwe jest wysłanie dowolnego pliku, jest nieodpowiednie dobranie funkcji sprawdzającej rozszerzenie pliku.
 

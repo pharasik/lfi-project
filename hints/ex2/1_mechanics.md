@@ -1,4 +1,4 @@
-# Jaki jest tego powód? [MECHANIKA]
+# Zmienna $\_FILES [MECHANIKA]
 
 ## Wyjaśnienie dotyczące mechanizmu sesji
 
